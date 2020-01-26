@@ -1,9 +1,10 @@
-import React from "react"
+import React from 'react'
 import { withStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid'
 //import { Link, graphql } from "gatsby"
 
 //import Bio from "../components/bio"
-import Layout from "../components/layout"
+import Layout from '../components/layout'
 import Post from '../components/post'
 //import SEO from "../components/seo"
 //import { rhythm } from "../utils/typography"
@@ -25,6 +26,11 @@ const dummyData = [
     title: 'We Got Game3',
     datePublished: '072319',
     slurp: 'Homepage headlines have always been an important focus of attention. While web app builders see them as an essential detail of the entire composition, regular visitors see them as…'
+  },
+  {
+    title: 'We Got Game3',
+    datePublished: '072319',
+    slurp: 'Homepage headlines have always been an important focus of attention. While web app builders see them as an essential detail of the entire composition, regular visitors see them as…'
   }
 ]
 
@@ -36,18 +42,34 @@ const styles = {
     fontWeight: '700',
     fontStyle: 'normal',
     margin: '1.3em'
-  }
+  },
 };
 
-
+// TODO 1/25/20: dynamic post creation
 const BlogIndex = (props) => {
-
+  
   const { classes } = props
 
     return (
       <Layout>
-        <h2 className={classes.pageTitle}>Recent Posts</h2>
-        <Post></Post>
+        <main>
+          <h2 className={classes.pageTitle}>Recent Posts</h2>
+        </main>
+        <Grid
+          container
+          direction='row'
+          justify='center'
+          alignItems='baseline'
+        >
+          {dummyData.map((data) => 
+            <Post 
+              heading={data.title}
+              blurb={data.slurp}
+              date={data.datePublished}
+            />)
+          }
+        </Grid>
+
       </Layout>
     )
 }
