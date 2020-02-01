@@ -1,7 +1,7 @@
 import React from 'react'
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid'
-//import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 
 //import Bio from "../components/bio"
 import Layout from '../components/layout'
@@ -10,30 +10,6 @@ import Post from '../components/post'
 //import { rhythm } from "../utils/typography"
 
 // TODO: figure out when to use dangerouslySetInnerHTML
-//
-const dummyData = [
-  {
-    title: 'We Got Game',
-    datePublished: '072319',
-    slurp: 'Homepage headlines have always been an important focus of attention. While web app builders see them as an essential detail of the entire composition, regular visitors see them as…'
-  },
-  {
-    title: 'We Got Game2',
-    datePublished: '072319',
-    slurp: 'Homepage headlines have always been an important focus of attention. While web app builders see them as an essential detail of the entire composition, regular visitors see them as…'
-  },
-  {
-    title: 'We Got Game3',
-    datePublished: '072319',
-    slurp: 'Homepage headlines have always been an important focus of attention. While web app builders see them as an essential detail of the entire composition, regular visitors see them as…'
-  },
-  {
-    title: 'We Got Game3',
-    datePublished: '072319',
-    slurp: 'Homepage headlines have always been an important focus of attention. While web app builders see them as an essential detail of the entire composition, regular visitors see them as…'
-  }
-]
-
 
 const styles = {
   pageTitle: {
@@ -46,10 +22,9 @@ const styles = {
 };
 
 // TODO 1/25/20: dynamic post creation
-const BlogIndex = (props) => {
-  
-  const { classes } = props
+const BlogIndex = ({ classes, data }) => {
 
+  const posts = data.allGhostPost.edges;
     return (
       <Layout>
         <main>
@@ -61,11 +36,11 @@ const BlogIndex = (props) => {
           justify='center'
           alignItems='baseline'
         >
-          {dummyData.map((data) => 
+          {posts.map((post) => 
             <Post 
-              heading={data.title}
-              blurb={data.slurp}
-              date={data.datePublished}
+              heading={post.node.title}
+              blurb={post.node.excerpt}
+              date={post.node.created_at}
             />)
           }
         </Grid>
@@ -76,26 +51,17 @@ const BlogIndex = (props) => {
 
 export default withStyles(styles)(BlogIndex)
 
-// TODO what is this bottom? 
 export const pageQuery = graphql`
-  query {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+  query GhostPostQuery($limit: Int = 15) {
+    allGhostPost(
+        sort: { order: DESC, fields: [published_at] },
+        limit: $limit,
+    ) {
       edges {
         node {
           excerpt
-          fields {
-            slug
-          }
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            title
-            description
-          }
+          title
+          created_at(formatString: "YYYY-MM-DD")
         }
       }
     }

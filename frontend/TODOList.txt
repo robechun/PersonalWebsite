@@ -1,0 +1,7 @@
+- Image in Post.jsx needs to be center not at front.
+- localhost 8000 (gatsby develop) doesn't fetch the latest stuff from ghost after deployment?
+- React routing
+- Actual posts page
+- Books page
+- Uploading image within ghost and then getting image after
+- Recent Posts alignment

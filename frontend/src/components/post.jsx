@@ -1,38 +1,31 @@
 import React from 'react';
 import cx from 'clsx';
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardMedia from '@material-ui/core/CardMedia';
-import CardContent from '@material-ui/core/CardContent';
-import CardActionArea from '@material-ui/core/CardActionArea';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 
+import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 
-// TODO: make it actually work with real data and make things look more how I want it to look 
+// TODO 1/25/20: Make the image and other stuff buttons.
 
 const maxWidth = '346px'
 
 const useStyles = makeStyles(({ breakpoints, spacing }) => ({
-  root: {
-    backgroundColor: '#CBCBCB'
-    
-  },
-
   media: {
-    height: '224px'
+    height: '224px',
   },
   contentHeading: {
     fontSize: '28px',
     fontFamily: 'Archivo Narrow',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    lineHeight: '1.2em',
+    marginBottom: '0.5em'
   },
   contentDate: {
     fontSize: '14px',
     fontFamily: 'Inconsolata',
     color: '#8D1C1C',
-    paddingRight: '30px'
+    paddingRight: '30px',
   },
   contentBlurb: {
     fontFamily: 'Inconsolata',
@@ -40,13 +33,8 @@ const useStyles = makeStyles(({ breakpoints, spacing }) => ({
   },
   content: {
     maxWidth: maxWidth,
-    margin: 'auto'
+    margin: '24px'
   }
-
-  //cta: {
-    //marginTop: 24,
-    //textTransform: 'initial',
-  //},
 }));
 
 const Post = (props) => {
@@ -56,17 +44,22 @@ const Post = (props) => {
     <Grid 
       container
       direction='column'
-      alignItems='center'
-      justify='center'
+      alignItems='flex-start'
+      justify='flex-start'
       className={ cx(styles.content) }
     >
       <Grid item>
-        <img
-          className={ cx(styles.media) }
-          src={
-          'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Git_icon.svg/2000px-Git_icon.svg.png'
-          }>
-        </img>
+        <Button disableRipple>
+          <img
+            className={ cx(styles.media) }
+            src={
+            'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Git_icon.svg/2000px-Git_icon.svg.png'
+            }>
+          </img>
+        </Button>
+    </Grid>
+      <Grid item className={styles.contentDate}>
+        <div>{props.date}</div>
       </Grid>
 
       <Grid 
@@ -74,13 +67,9 @@ const Post = (props) => {
         direction='row'
         alignItems='center'
         justify='space-between'
-        className={ cx(styles.content) }
       >
-        <Grid item className={styles.contentHeading}>
+        <Grid item wrap='wrap' className={styles.contentHeading}>
           <div>{props.heading}</div>
-        </Grid>
-        <Grid item className={styles.contentDate}>
-          <div>{props.date}</div>
         </Grid>
       </Grid>
 
