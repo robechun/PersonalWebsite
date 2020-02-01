@@ -69,7 +69,7 @@ const Post = (props) => {
         alignItems='center'
         justify='space-between'
       >
-        <Grid item wrap='wrap' className={styles.contentHeading}>
+        <Grid item className={styles.contentHeading}>
           <div>{props.heading}</div>
         </Grid>
       </Grid>

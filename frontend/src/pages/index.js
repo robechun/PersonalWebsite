@@ -33,20 +33,20 @@ const BlogIndex = ({ classes, data }) => {
           className={classes.offset}
         >
           <Title>Recent Posts</Title>
-        <Grid
-          container
-          direction='row'
-          justify='center'
-          alignItems='baseline'
-        >
-          {posts.map((post) => 
-            <Post 
-              heading={post.node.title}
-              blurb={post.node.excerpt}
-              date={post.node.created_at}
-            />)
-          }
-        </Grid>
+          <Grid
+            container
+            direction='row'
+            justify='center'
+            alignItems='baseline'
+          >
+            {posts.map((post) => 
+              <Post 
+                heading={post.node.title}
+                blurb={post.node.excerpt}
+                date={post.node.created_at}
+              />)
+            }
+          </Grid>
         </Grid>
 
       </Layout>
