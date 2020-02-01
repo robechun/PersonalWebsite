@@ -1,35 +1,38 @@
 import React from 'react'
-import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid'
+import { withStyles } from '@material-ui/core/styles';
 import { graphql } from "gatsby"
+
 
 //import Bio from "../components/bio"
 import Layout from '../components/layout'
 import Post from '../components/post'
+import Title from '../components/title'
 //import SEO from "../components/seo"
 //import { rhythm } from "../utils/typography"
 
 // TODO: figure out when to use dangerouslySetInnerHTML
 
 const styles = {
-  pageTitle: {
-    fontFamily: 'Sunflower',
-    fontSize: '34px',
-    fontWeight: '700',
-    fontStyle: 'normal',
-    margin: '1.3em'
-  },
-};
+  offset: {
+    margin: '3em'
+  }
+}
 
-// TODO 1/25/20: dynamic post creation
 const BlogIndex = ({ classes, data }) => {
 
   const posts = data.allGhostPost.edges;
     return (
       <Layout>
-        <main>
-          <h2 className={classes.pageTitle}>Recent Posts</h2>
-        </main>
+
+        <Grid 
+          container
+          directon='column'
+          justify='flex-start'
+          alignItems='center'
+          className={classes.offset}
+        >
+          <Title>Recent Posts</Title>
         <Grid
           container
           direction='row'
@@ -44,12 +47,13 @@ const BlogIndex = ({ classes, data }) => {
             />)
           }
         </Grid>
+        </Grid>
 
       </Layout>
     )
 }
 
-export default withStyles(styles)(BlogIndex)
+export default withStyles(styles)(BlogIndex);
 
 export const pageQuery = graphql`
   query GhostPostQuery($limit: Int = 15) {

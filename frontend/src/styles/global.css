@@ -7,3 +7,11 @@
 html {
   background-color: #FBFBFB
 }
+
+.pageTitle: {
+    font-family: 'Sunflower';
+    font-size: '34px';
+    font-weight: '700';
+    font-style: 'normal';
+    margin: '1.3em';
+}

@@ -5,7 +5,11 @@ import { withStyles } from '@material-ui/core/styles';
 // TODO this styling
 const styles = {
   title: {
-    color: 'blue'
+    fontFamily: 'Sunflower',
+    fontSize: '34px',
+    fontWeight: '700',
+    fontStyle: 'normal',
+    marginTop: '0px'
   },
 };
 

@@ -33,7 +33,8 @@ const useStyles = makeStyles(({ breakpoints, spacing }) => ({
   },
   content: {
     maxWidth: maxWidth,
-    margin: '24px'
+    margin: '24px',
+    marginLeft: '0px'
   }
 }));
 
