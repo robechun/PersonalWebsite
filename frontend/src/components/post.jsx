@@ -19,7 +19,7 @@ const useStyles = makeStyles(({ breakpoints, spacing }) => ({
     fontFamily: 'Archivo Narrow',
     fontWeight: 'bold',
     lineHeight: '1.2em',
-    marginBottom: '0.5em'
+    marginBottom: '0.5em',
   },
   contentDate: {
     fontSize: '14px',
@@ -30,12 +30,22 @@ const useStyles = makeStyles(({ breakpoints, spacing }) => ({
   contentBlurb: {
     fontFamily: 'Inconsolata',
     fontSize: '14px',
+    color: '#000000',
   },
   content: {
     maxWidth: maxWidth,
     margin: '24px',
     marginLeft: '0px'
+  },
+  link: {
+    '& a': {
+      color: '#000000'
+    },
+    '& a:hover, & a:active': {
+      color: '#e32'
+    },
   }
+
 }));
 
 const Post = (props) => {
@@ -50,7 +60,7 @@ const Post = (props) => {
       className={ cx(styles.content) }
     >
       <Grid item>
-        <Button disableRipple>
+        <Button href={props.slug} disableRipple>
           <img
             className={ cx(styles.media) }
             src={
@@ -69,13 +79,13 @@ const Post = (props) => {
         alignItems='center'
         justify='space-between'
       >
-        <Grid item className={styles.contentHeading}>
-          <div>{props.heading}</div>
+        <Grid item className={ cx(styles.contentHeading, styles.link) }>
+          <a href={props.slug}>{props.heading}</a>
         </Grid>
       </Grid>
 
-      <Grid item className={styles.contentBlurb}>
-        <p>{props.blurb}</p>
+      <Grid item className={ cx(styles.contentBlurb, styles.link) }>
+        <a href={props.slug}>{props.blurb}</a>
       </Grid>
 
     </Grid>
@@ -88,6 +98,7 @@ Post.propTypes = {
   heading: PropTypes.string.isRequired,
   blurb: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
+  slug: PropTypes.string.isRequired,
   image: PropTypes.any.isRequired
 }
 

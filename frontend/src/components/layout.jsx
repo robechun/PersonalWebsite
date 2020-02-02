@@ -34,6 +34,9 @@ const styles = {
     fontWeight: 'lighter',
     textDecoration: 'none',
     boxShadow: 'none',
+    '&:hover, &:active': {
+      color: '#A6B0EA',
+    },
   }
 };
 

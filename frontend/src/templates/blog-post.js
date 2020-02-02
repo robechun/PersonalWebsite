@@ -1,55 +1,53 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
-
-import Bio from "../components/bio"
+import { graphql } from "gatsby"
+import { withStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
 import Layout from "../components/layout"
-import SEO from "../components/seo"
-import { rhythm, scale } from "../utils/typography"
+import Title from '../components/title'
 
-class BlogPostTemplate extends React.Component {
-  render() {
-    const post = this.props.data.markdownRemark
-    const siteTitle = this.props.data.site.siteMetadata.title
-    const { previous, next } = this.props.pageContext
 
-    return (
-      <Layout location={this.props.location} title={siteTitle}>
-        <SEO
+//import Bio from "../components/bio"
+//import SEO from "../components/seo"
+//import { rhythm, scale } from "../utils/typography"
+
+const styles = {
+  article: { 
+    fontFamily: 'Raleway',
+    fontSize: '16px',
+  },
+  paperStyle: {
+    margin: '50px',
+    padding: '50px'
+  }
+
+}
+
+const BlogPostTemplate = ({ classes, data, pageContext }) => {
+
+  const post = data.ghostPost;
+  const siteTitle = data.site.siteMetadata.title;
+  const { previous, next } = pageContext;
+
+  return(
+      <Layout>
+        {/*<SEO
           title={post.frontmatter.title}
           description={post.frontmatter.description || post.excerpt}
-        />
-        <article>
-          <header>
-            <h1
-              style={{
-                marginTop: rhythm(1),
-                marginBottom: 0,
-              }}
-            >
-              {post.frontmatter.title}
-            </h1>
-            <p
-              style={{
-                ...scale(-1 / 5),
-                display: `block`,
-                marginBottom: rhythm(1),
-              }}
-            >
-              {post.frontmatter.date}
-            </p>
-          </header>
-          <section dangerouslySetInnerHTML={{ __html: post.html }} />
-          <hr
-            style={{
-              marginBottom: rhythm(1),
-            }}
-          />
-          <footer>
-            <Bio />
-          </footer>
-        </article>
+        />*/}
+        {/*TODO image here*/}
+        <Paper className={classes.paperStyle}>
+          <article>
+            <header>
+              <Title>{post.title}</Title>
+            </header>
+            <section 
+              className={classes.article}
+              dangerouslySetInnerHTML={{ __html: post.html }} />
+            <hr/>
+          </article>
+        </Paper>
 
-        <nav>
+        {/*<nav>
           <ul
             style={{
               display: `flex`,
@@ -74,13 +72,12 @@ class BlogPostTemplate extends React.Component {
               )}
             </li>
           </ul>
-        </nav>
+        </nav>*/}
       </Layout>
     )
-  }
 }
 
-export default BlogPostTemplate
+export default withStyles(styles)(BlogPostTemplate);
 
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
@@ -89,15 +86,12 @@ export const pageQuery = graphql`
         title
       }
     }
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+    ghostPost(slug: { eq: $slug }) {
       id
-      excerpt(pruneLength: 160)
       html
-      frontmatter {
-        title
-        date(formatString: "MMMM DD, YYYY")
-        description
-      }
+      title
+      slug
+      reading_time
     }
   }
 `
