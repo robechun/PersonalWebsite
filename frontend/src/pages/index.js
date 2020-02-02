@@ -3,15 +3,12 @@ import Grid from '@material-ui/core/Grid'
 import { withStyles } from '@material-ui/core/styles';
 import { graphql } from "gatsby"
 
-
 //import Bio from "../components/bio"
 import Layout from '../components/layout'
 import Post from '../components/post'
 import Title from '../components/title'
 //import SEO from "../components/seo"
 //import { rhythm } from "../utils/typography"
-
-// TODO: figure out when to use dangerouslySetInnerHTML
 
 const styles = {
   offset: {

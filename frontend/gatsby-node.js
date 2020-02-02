@@ -1,5 +1,6 @@
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
+var s3 = require(`@auth0/s3`);
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
@@ -22,7 +23,7 @@ exports.createPages = async ({ graphql, actions }) => {
     throw result.errors
   }
 
-  // Create blog posts pages.
+  // Create all the pages
   const posts = result.data.allGhostPost.edges
 
   posts.forEach((post, index) => {
@@ -39,17 +40,43 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     })
   })
+
 }
 
-//exports.onCreateNode = ({ node, actions, getNode }) => {
-  //const { createNodeField } = actions
+exports.onPostBuild = async (params) => {
+  var client = s3.createClient({
+    s3Options: {
+      accessKeyId: process.env.AWS_ACCESS_KEY,
+      secretAccessKey: process.env.AWS_SECRET_KEY,
+      region: 'us-west-2'
+    }
+  })
 
-  //if (node.internal.type === `MarkdownRemark`) {
-    //const value = createFilePath({ node, getNode })
-    //createNodeField({
-      //name: `slug`,
-      //node,
-      //value,
-    //})
-  //}
-//}
+  var params = {
+    localDir: "public",
+    deleteRemoved: true,
+    s3Params: {
+      Bucket: 'www.robertchung.me',
+      Prefix: ''
+    },
+  };
+
+  var uploader = client.uploadDir(params);
+  uploader.on('error', function(err) {
+    console.error("unable to sync:", err.stack);
+  });
+  uploader.on('progress', function() {
+    console.log("progress", uploader.progressAmount, uploader.progressTotal);
+  });
+  uploader.on('end', function() {
+    console.log("done uploading");
+  });
+  
+  await(sleep(10000));
+}
+
+function sleep(ms) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
+}
