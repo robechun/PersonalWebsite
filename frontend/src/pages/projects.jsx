@@ -11,7 +11,7 @@ const styles = {
   },
 };
 
-const BookShelf = (props) => {
+const Projects = (props) => {
   const { classes } = props;
 
   return (
@@ -23,4 +23,4 @@ const BookShelf = (props) => {
   )
 }
 
-export default withStyles(styles)(BookShelf);
+export default withStyles(styles)(Projects);

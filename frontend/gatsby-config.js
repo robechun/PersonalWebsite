@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 module.exports = {
   siteMetadata: {
     title: `Robert Chung blog`,
@@ -76,8 +78,8 @@ module.exports = {
     {
       resolve: `gatsby-source-ghost`,
       options: {
-        apiUrl: `http://localhost:2368`,
-        contentApiKey: `5b730fe96eec73303f0f6dc6b1`,
+        apiUrl: `https://ghost.robertchung.me`,
+        contentApiKey: process.env.GATSBY_CONTENT_API,
         version: `v3`
       }
     }

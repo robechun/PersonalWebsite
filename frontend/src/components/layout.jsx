@@ -66,10 +66,10 @@ const Layout = (props) => {
             <Link className={classes.title} href='/'>Robert Chung</Link>
           </Grid>
           <Grid item>
-            <Link className={classes.links} href='/about'>ABOUT</Link>
+            <Link className={classes.links} href='/'>ARTICLES</Link>
           </Grid>
           <Grid item>
-            <Link className={classes.links} href='/'>ARTICLES</Link>
+            <Link className={classes.links} href='/about'>ABOUT</Link>
           </Grid>
           <Grid item>
             <Link className={classes.links} href='/bookshelf'>BOOKSHELF</Link>
