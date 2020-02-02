@@ -9,3 +9,5 @@ x Recent Posts alignment
 x About page setup
 - Redo design for top part of layout. Also means there needs to be a way to get to the blog posts easier
 - Actual footer
+- Incorporate Read-Time
+- image container on the actual posts page so that we can use all kinds of image sizes and it wont look bad

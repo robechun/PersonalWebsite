@@ -45,6 +45,7 @@ const BlogIndex = ({ classes, data }) => {
                 blurb={post.node.excerpt}
                 date={post.node.created_at}
                 slug={post.node.slug}
+                imageUrl={post.node.feature_image}
               />)
             }
           </Grid>
@@ -68,6 +69,7 @@ export const pageQuery = graphql`
           title
           created_at(formatString: "YYYY-MM-DD")
           slug
+          feature_image
         }
       }
     }

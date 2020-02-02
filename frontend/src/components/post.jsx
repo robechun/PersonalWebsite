@@ -63,9 +63,7 @@ const Post = (props) => {
         <Button href={props.slug} disableRipple>
           <img
             className={ cx(styles.media) }
-            src={
-            'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Git_icon.svg/2000px-Git_icon.svg.png'
-            }>
+            src={props.imageUrl}>
           </img>
         </Button>
     </Grid>
@@ -99,7 +97,7 @@ Post.propTypes = {
   blurb: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
   slug: PropTypes.string.isRequired,
-  image: PropTypes.any.isRequired
+  imageUrl: PropTypes.string.isRequired
 }
 
 export default Post;

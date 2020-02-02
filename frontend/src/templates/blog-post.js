@@ -17,9 +17,15 @@ const styles = {
   },
   paperStyle: {
     margin: '50px',
-    padding: '50px'
+    padding: '50px',
+    marginTop: '-7em',
+    zIndex: '2',
+    position: 'relative'
+  },
+  imageStyle: {
+    width: '100%',
+    height: 'auto'
   }
-
 }
 
 const BlogPostTemplate = ({ classes, data, pageContext }) => {
@@ -34,7 +40,7 @@ const BlogPostTemplate = ({ classes, data, pageContext }) => {
           title={post.frontmatter.title}
           description={post.frontmatter.description || post.excerpt}
         />*/}
-        {/*TODO image here*/}
+        <img src={post.feature_image} className={classes.imageStyle}/>
         <Paper className={classes.paperStyle}>
           <article>
             <header>
@@ -92,6 +98,7 @@ export const pageQuery = graphql`
       title
       slug
       reading_time
+      feature_image
     }
   }
 `
