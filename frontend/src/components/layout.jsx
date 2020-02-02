@@ -4,20 +4,25 @@ import Link from '@material-ui/core/Link';
 
 import { withStyles } from '@material-ui/core/styles';
 
-// TODO acutally get the nav bar working
-// TODO: whitespace inbetween stuff
 const styles = {
   title: {
     color: '#FFFFFF',
-    fontSize: '64px',
-    fontFamily: 'Qwigley',
-    fontWeight: 'lighter',
-    marginBottom: '0.1em'
+    fontSize: '33px',
+    fontFamily: 'Oleo Script',
+    marginTop: '0em',
+    marginBottom: '0em',
+    paddingTop: '16px',
+    '&:hover, &:active': {
+      color: '#FFFFFF',
+      textDecoration: 'none'
+    }
   },
 
   header: {
     backgroundColor: '#31315C',
-    height: '25em'
+    height: '4.3em',
+    paddingLeft: '30px',
+    margin: '0px'
   },
   
   footer: {
@@ -29,7 +34,7 @@ const styles = {
 
   links: {
     fontFamily: 'Nunito',
-    fontSize: '18px',
+    fontSize: '15px',
     color: '#A6B0EA',
     fontWeight: 'lighter',
     textDecoration: 'none',
@@ -37,44 +42,40 @@ const styles = {
     '&:hover, &:active': {
       color: '#A6B0EA',
     },
-  }
+  },
 };
 
 // TODO: footer
-// TODO: react router. donno if it's supposed to be in here or elsewhere
 const Layout = (props) => {
 
   const { classes } = props;
 
   return (
     <div>
-      <header className={classes.header}>
+      <header>
         <Grid 
           container
-          direction='column'
-          justify='center'
-          alignItems='center'
+          direction='row'
+          justify='flex-start'
+          alignItems='baseline'
           alignContent='center'
+          spacing={6}
+          className={classes.header}
         >
           <Grid item>
-            <h1 className={classes.title}>Robert Chung</h1>
+            <Link className={classes.title} href='/'>Robert Chung</Link>
           </Grid>
-          <Grid 
-            container
-            direction='column'
-            justify='center'
-            alignItems='flex-start'
-            alignContent='center'
-          >
-            <Grid item>
-              <Link className={classes.links} href='/about'>/about</Link>
-            </Grid>
-            <Grid item>
-              <Link className={classes.links} href='/bookshelf'>/bookshelf</Link>
-            </Grid>
-            <Grid item>
-              <Link className={classes.links} href='/projects'>/projects</Link>
-            </Grid>
+          <Grid item>
+            <Link className={classes.links} href='/about'>ABOUT</Link>
+          </Grid>
+          <Grid item>
+            <Link className={classes.links} href='/'>ARTICLES</Link>
+          </Grid>
+          <Grid item>
+            <Link className={classes.links} href='/bookshelf'>BOOKSHELF</Link>
+          </Grid>
+          <Grid item>
+            <Link className={classes.links} href='/projects'>PROJECTS</Link>
           </Grid>
         </Grid>
       </header>
