@@ -12,7 +12,7 @@ const styles = {
 };
 
 const Projects = (props) => {
-  const { classes } = props;
+  //const { classes } = props;
 
   return (
     <Layout>

@@ -5,7 +5,6 @@ import Paper from '@material-ui/core/Paper';
 import Layout from "../components/layout"
 import Title from '../components/title'
 
-
 //import Bio from "../components/bio"
 //import SEO from "../components/seo"
 //import { rhythm, scale } from "../utils/typography"
@@ -31,8 +30,8 @@ const styles = {
 const BlogPostTemplate = ({ classes, data, pageContext }) => {
 
   const post = data.ghostPost;
-  const siteTitle = data.site.siteMetadata.title;
-  const { previous, next } = pageContext;
+  //const siteTitle = data.site.siteMetadata.title;
+  //const { previous, next } = pageContext;
 
   return(
       <Layout>
@@ -40,7 +39,7 @@ const BlogPostTemplate = ({ classes, data, pageContext }) => {
           title={post.frontmatter.title}
           description={post.frontmatter.description || post.excerpt}
         />*/}
-        <img src={post.feature_image} className={classes.imageStyle}/>
+        <img src={post.feature_image} className={classes.imageStyle} alt=''/>
         <Paper className={classes.paperStyle}>
           <article>
             <header>

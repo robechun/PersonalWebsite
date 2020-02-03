@@ -2,8 +2,6 @@ import React from 'react'
 import Paper from '@material-ui/core/Paper'
 import { withStyles } from '@material-ui/core/styles';
 import { graphql } from 'gatsby'
-import cx from 'clsx';
-//import Grid from '@material-ui/core/Grid'
 
 import Layout from '../components/layout.jsx'
 import Title from '../components/title.jsx'
@@ -26,9 +24,9 @@ const About = ({ classes, data }) => {
       <Layout>
         <Paper elevation={3} className={classes.paperStyle}>
             <Title className={ classes.content }>About</Title>
-          <p className={classes.content} 
-             dangerouslySetInnerHTML={{ __html: data.ghostPage.html }}
-          />
+            <p className={classes.content} 
+               dangerouslySetInnerHTML={{ __html: data.ghostPage.html }}
+            />
 
         </Paper>
       </Layout>

@@ -1,11 +1,12 @@
 require('dotenv').config()
+const siteAddress = new URL('https://robertchung.me');
 
 module.exports = {
   siteMetadata: {
     title: `Robert Chung blog`,
     author: `Robert Chung`,
     description: `Blog for Robert`,
-    siteUrl: `http://localhost:8000`,
+    siteUrl: `http://robertchung.me.s3-website-us-west-2.amazonaws.com/`,
     social: {
       twitter: `TODO`,
     },
@@ -55,9 +56,25 @@ module.exports = {
         contentApiKey: process.env.GATSBY_CONTENT_API,
         version: `v3`
       }
+    },
+    {
+      resolve: `gatsby-plugin-material-ui`,
+      options: {
+        stylesProvider: {
+          injectFirst: true,
+        },
+      },
+    },
+    {
+      resolve: `gatsby-plugin-s3`,
+      options: {
+        bucketName: 'robertchung.me',
+        protocol: siteAddress.protocol.slice(0, -1),
+        hostname: siteAddress.hostname,
+      },
     }
+  ],
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
-  ],
 }

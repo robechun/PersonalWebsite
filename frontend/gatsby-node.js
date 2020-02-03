@@ -43,37 +43,37 @@ exports.createPages = async ({ graphql, actions }) => {
 
 }
 
-exports.onPostBuild = async (params) => {
-  var client = s3.createClient({
-    s3Options: {
-      accessKeyId: process.env.AWS_ACCESS_KEY,
-      secretAccessKey: process.env.AWS_SECRET_KEY,
-      region: 'us-west-2'
-    }
-  })
+//exports.onPostBuild = async (params) => {
+  //var client = s3.createClient({
+    //s3Options: {
+      //accessKeyId: process.env.AWS_ACCESS_KEY,
+      //secretAccessKey: process.env.AWS_SECRET_KEY,
+      //region: 'us-west-2'
+    //}
+  //})
 
-  var params = {
-    localDir: "public",
-    deleteRemoved: true,
-    s3Params: {
-      Bucket: 'www.robertchung.me',
-      Prefix: ''
-    },
-  };
+  //var params = {
+    //localDir: "public",
+    //deleteRemoved: true,
+    //s3Params: {
+      //Bucket: 'robertchung.me',
+      //Prefix: ''
+    //},
+  //};
 
-  var uploader = client.uploadDir(params);
-  uploader.on('error', function(err) {
-    console.error("unable to sync:", err.stack);
-  });
-  uploader.on('progress', function() {
-    console.log("progress", uploader.progressAmount, uploader.progressTotal);
-  });
-  uploader.on('end', function() {
-    console.log("done uploading");
-  });
+  //var uploader = client.uploadDir(params);
+  //uploader.on('error', function(err) {
+    //console.error("unable to sync:", err.stack);
+  //});
+  //uploader.on('progress', function() {
+    //console.log("progress", uploader.progressAmount, uploader.progressTotal);
+  //});
+  //uploader.on('end', function() {
+    //console.log("done uploading");
+  //});
   
-  await(sleep(10000));
-}
+  //await(sleep(20000));
+//}
 
 function sleep(ms) {
   return new Promise((resolve) => {

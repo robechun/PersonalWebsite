@@ -1,0 +1,3 @@
+- For server, redirect anything that's ghost.robertchung.me to ghost.robertchung.me/ghost
+- Maybe have the server set-off a lambda to re-build the build for s3 thing so that it gets updated when content is updated
+  - Invalidate cloudfront when there's a new build

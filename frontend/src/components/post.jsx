@@ -61,10 +61,7 @@ const Post = (props) => {
     >
       <Grid item>
         <Button href={props.slug} disableRipple>
-          <img
-            className={ cx(styles.media) }
-            src={props.imageUrl}>
-          </img>
+          <img className={ cx(styles.media) } src={props.imageUrl} alt=''/>
         </Button>
     </Grid>
       <Grid item className={styles.contentDate}>
