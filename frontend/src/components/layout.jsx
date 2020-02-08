@@ -2,8 +2,11 @@ import React, { useState, useEffect } from "react";
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
 import Hidden from '@material-ui/core/Hidden';
+import { SocialIcon } from 'react-social-icons';
 
 import { withStyles } from '@material-ui/core/styles';
+
+const themeColor = '#31315C';
 
 const styles = {
   title: {
@@ -20,7 +23,7 @@ const styles = {
   },
 
   header: {
-    backgroundColor: '#31315C',
+    backgroundColor: themeColor,
     height: '4.3em',
     paddingLeft: '30px',
     margin: '0px'
@@ -30,7 +33,9 @@ const styles = {
     position: 'flex',
     bottom: '0',
     width: '100%',
-    height: '2.5rem',
+    height: '3.5rem',
+    backgroundColor: themeColor,
+    paddingRight: '20px',
   },
 
   links: {
@@ -46,7 +51,13 @@ const styles = {
   },
 };
 
-// TODO: footer
+const socialLinks = {
+  height: 40,
+  width: 40
+};
+
+const socialLinkColor = 'FF9D9D';
+
 const Layout = (props) => {
 
   const { classes } = props;
@@ -93,7 +104,37 @@ const Layout = (props) => {
         </Grid>
       </header>
       <div>{props.children}</div>
-      <footer className={classes.footer}>bye world</footer>
+      <footer className={classes.footer}>
+        <Grid 
+          container
+          direction='row'
+          justify='flex-end'
+          alignContent='center'
+          spacing={2}
+        >
+          <Grid item>
+            <SocialIcon 
+              url='https://linkedin.com/in/robertchung97'
+              bgColor={socialLinkColor}
+              style={socialLinks}
+            />
+          </Grid>
+          <Grid item>
+            <SocialIcon 
+              url='https://github.com/Altrum/'
+              bgColor={socialLinkColor}
+              style={socialLinks}
+            />
+          </Grid>
+          <Grid item>
+            <SocialIcon 
+              url='mailto:robertchung97@gmail.com'
+              bgColor={socialLinkColor}
+              style={socialLinks}
+            />
+          </Grid>
+        </Grid>
+      </footer>
     </div>
   );
 

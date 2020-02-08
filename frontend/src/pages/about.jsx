@@ -16,7 +16,7 @@ const styles = {
   }
 }
 
-
+// TODO 2/8/20: conditional rendering of paper just like blog-post
 const About = ({ classes, data }) => {
 
   return (

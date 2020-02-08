@@ -12,7 +12,7 @@ import Title from '../components/title'
 
 const styles = {
   offset: {
-    margin: '3em'
+    margin: '3em 3em 0em 3em'
   },
   content: {
     maxWidth: '346px',
@@ -32,7 +32,9 @@ const BlogIndex = ({ classes, data }) => {
           justify='flex-start'
           alignItems='center'
         >
-          <Title className={classes.offset}>Recent Posts</Title>
+          <div className={classes.offset}>
+            <Title>Recent Posts</Title>
+          </div>
           <Grid
             container
             direction='row'
