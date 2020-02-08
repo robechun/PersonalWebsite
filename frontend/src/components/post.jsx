@@ -8,8 +8,6 @@ import PropTypes from 'prop-types';
 
 // TODO 1/25/20: Make the image and other stuff buttons.
 
-const maxWidth = '346px'
-
 const useStyles = makeStyles(({ breakpoints, spacing }) => ({
   media: {
     height: '224px',
@@ -32,11 +30,6 @@ const useStyles = makeStyles(({ breakpoints, spacing }) => ({
     fontSize: '14px',
     color: '#000000',
   },
-  content: {
-    maxWidth: maxWidth,
-    margin: '24px',
-    marginLeft: '0px'
-  },
   link: {
     '& a': {
       color: '#000000'
@@ -56,8 +49,7 @@ const Post = (props) => {
       container
       direction='column'
       alignItems='flex-start'
-      justify='flex-start'
-      className={ cx(styles.content) }
+      justify='center'
       xs={12}
     >
       <Grid item>
@@ -68,18 +60,9 @@ const Post = (props) => {
       <Grid item className={styles.contentDate}>
         <div>{props.date}</div>
       </Grid>
-
-      <Grid 
-        container
-        direction='row'
-        alignItems='center'
-        justify='space-between'
-      >
-        <Grid item className={ cx(styles.contentHeading, styles.link) }>
-          <a href={props.slug}>{props.heading}</a>
-        </Grid>
+      <Grid item className={ cx(styles.contentHeading, styles.link) }>
+        <a href={props.slug}>{props.heading}</a>
       </Grid>
-
       <Grid item className={ cx(styles.contentBlurb, styles.link) }>
         <a href={props.slug}>{props.blurb}</a>
       </Grid>

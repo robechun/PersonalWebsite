@@ -13,7 +13,11 @@ import Title from '../components/title'
 const styles = {
   offset: {
     margin: '3em'
-  }
+  },
+  content: {
+    maxWidth: '346px',
+    margin: '24px',
+  },
 }
 
 const BlogIndex = ({ classes, data }) => {
@@ -27,23 +31,25 @@ const BlogIndex = ({ classes, data }) => {
           directon='column'
           justify='flex-start'
           alignItems='center'
-          className={classes.offset}
         >
-          <Title>Recent Posts</Title>
+          <Title className={classes.offset}>Recent Posts</Title>
           <Grid
             container
             direction='row'
             justify='center'
-            alignItems='baseline'
+            alignContent='center'
           >
             {posts.map((post) => 
-              <Post 
-                heading={post.node.title}
-                blurb={post.node.excerpt}
-                date={post.node.created_at}
-                slug={post.node.slug}
-                imageUrl={post.node.feature_image}
-              />)
+              <Grid item className={classes.content}>
+                <Post 
+                  heading={post.node.title}
+                  blurb={post.node.excerpt}
+                  date={post.node.created_at}
+                  slug={post.node.slug}
+                  imageUrl={post.node.feature_image}
+                />
+              </Grid>
+              )
             }
           </Grid>
         </Grid>

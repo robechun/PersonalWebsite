@@ -1,9 +1,11 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { withStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
+import { useTheme, withStyles } from '@material-ui/core/styles';
 import Layout from "../components/layout"
-import Title from '../components/title'
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+
+import PaperContent from '../components/posts/paperContent';
+import PaperlessContent from '../components/posts/paperlessContent';
 
 //import Bio from "../components/bio"
 //import SEO from "../components/seo"
@@ -32,6 +34,8 @@ const BlogPostTemplate = ({ classes, data, pageContext }) => {
   const post = data.ghostPost;
   //const siteTitle = data.site.siteMetadata.title;
   //const { previous, next } = pageContext;
+  const theme = useTheme();
+  const smallScreen = useMediaQuery(theme.breakpoints.down('xs'));
 
   return(
       <Layout>
@@ -40,17 +44,17 @@ const BlogPostTemplate = ({ classes, data, pageContext }) => {
           description={post.frontmatter.description || post.excerpt}
         />*/}
         <img src={post.feature_image} className={classes.imageStyle} alt=''/>
-        <Paper className={classes.paperStyle}>
-          <article>
-            <header>
-              <Title>{post.title}</Title>
-            </header>
-            <section 
-              className={classes.article}
-              dangerouslySetInnerHTML={{ __html: post.html }} />
-            <hr/>
-          </article>
-        </Paper>
+
+        {smallScreen 
+          ? <PaperlessContent
+              title={post.title}
+              html={post.html}
+            />
+          : <PaperContent
+              title={post.title}
+              html={post.html}
+            />
+        }
 
         {/*<nav>
           <ul

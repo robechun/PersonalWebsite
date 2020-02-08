@@ -17,3 +17,8 @@ x About page re-rendering and getting rid of the content during production?? Not
 - Resize nav bar to use hamburger when it gets to mobile size
 - Needs to be Mobile friendly...
 - SEO stuff
+- Deployment Strategy/perhaps not hosting ghost all the time to save cost??
+  - Everytime we have commit,
+    - npm build && deploy
+    - upload to s3 (run command)
+    - invalidate cloudfront cache
