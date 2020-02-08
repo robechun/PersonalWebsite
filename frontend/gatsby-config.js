@@ -72,6 +72,12 @@ module.exports = {
         protocol: siteAddress.protocol.slice(0, -1),
         hostname: siteAddress.hostname,
       },
+    },
+    {
+      resolve: `gatsby-plugin-canonical-urls`,
+      options: {
+        siteUrl: "https://www.robechun.me",
+      }
     }
   ],
     // this (optional) plugin enables Progressive Web App + Offline functionality
