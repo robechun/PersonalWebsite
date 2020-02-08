@@ -5,6 +5,7 @@ x Recent Posts alignment
 x About page setup
 x Redo design for top part of layout. Also means there needs to be a way to get to the blog posts easier
 x localhost 8000 (gatsby develop) doesn't fetch the latest stuff from ghost after deployment?
+x About page re-rendering and getting rid of the content during production?? Not sure why (due to nested <p> tags. Cant have that)
 
 - Image in Post.jsx needs to be center not at front.
 - Books page
@@ -15,5 +16,4 @@ x localhost 8000 (gatsby develop) doesn't fetch the latest stuff from ghost afte
 - image container on the actual posts page so that we can use all kinds of image sizes and it wont look bad
 - Resize nav bar to use hamburger when it gets to mobile size
 - Needs to be Mobile friendly...
-- About page re-rendering and getting rid of the content during production?? Not sure why
 - SEO stuff

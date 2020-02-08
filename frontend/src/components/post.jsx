@@ -58,12 +58,13 @@ const Post = (props) => {
       alignItems='flex-start'
       justify='flex-start'
       className={ cx(styles.content) }
+      xs={12}
     >
       <Grid item>
         <Button href={props.slug} disableRipple>
           <img className={ cx(styles.media) } src={props.imageUrl} alt=''/>
         </Button>
-    </Grid>
+      </Grid>
       <Grid item className={styles.contentDate}>
         <div>{props.date}</div>
       </Grid>

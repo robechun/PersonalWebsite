@@ -30,6 +30,7 @@ exports.createPages = async ({ graphql, actions }) => {
     const previous = index === posts.length - 1 ? null : posts[index + 1].node
     const next = index === 0 ? null : posts[index - 1].node
 
+    // TODO the "hydration problem" might be because we need to add '/' to the path instead
     createPage({
       path: post.node.slug,
       component: blogPost,

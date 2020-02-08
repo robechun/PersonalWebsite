@@ -1,6 +1,7 @@
-import React from "react"
+import React, { useState, useEffect } from "react";
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
+import Hidden from '@material-ui/core/Hidden';
 
 import { withStyles } from '@material-ui/core/styles';
 
@@ -49,6 +50,13 @@ const styles = {
 const Layout = (props) => {
 
   const { classes } = props;
+  const [isClient, setIsClient] = useState(0);
+
+  // Two pass rendering because we have hydration problems.
+  // See: https://github.com/gatsbyjs/gatsby/issues/17914
+  useEffect(() => {
+    setIsClient(1);
+  }, []);
 
   return (
     <div>
@@ -61,10 +69,14 @@ const Layout = (props) => {
           alignContent='center'
           spacing={6}
           className={classes.header}
+          key={isClient}
         >
-          <Grid item>
-            <Link className={classes.title} href='/'>Robert Chung</Link>
-          </Grid>
+          <Hidden implementation='css' xsDown>
+            <Grid item>
+              <Link className={classes.title} href='/'>Robert Chung</Link>
+            </Grid>
+          </Hidden>
+          <Hidden smDown>
           <Grid item>
             <Link className={classes.links} href='/'>ARTICLES</Link>
           </Grid>
@@ -77,6 +89,7 @@ const Layout = (props) => {
           <Grid item>
             <Link className={classes.links} href='/projects'>PROJECTS</Link>
           </Grid>
+          </Hidden>
         </Grid>
       </header>
       <div>{props.children}</div>

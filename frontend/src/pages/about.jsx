@@ -24,7 +24,7 @@ const About = ({ classes, data }) => {
       <Layout>
         <Paper elevation={3} className={classes.paperStyle}>
             <Title className={ classes.content }>About</Title>
-            <p className={classes.content} 
+            <div className={classes.content} 
                dangerouslySetInnerHTML={{ __html: data.ghostPage.html }}
             />
 
