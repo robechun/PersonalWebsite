@@ -17,15 +17,20 @@ function SEO({ description, lang, meta, title }) {
         site {
           siteMetadata {
             title
-            description
             author
+            description
+            siteUrl
+            social {
+              twitter
+            }
           }
         }
       }
     `
   )
 
-  const metaDescription = description || site.siteMetadata.description
+  const metaDescription = description || site.siteMetadata.description;
+  const twitterCreator = site.siteMetadata.social.twitter || site.siteMetadata.author;
 
   return (
     <Helmet
@@ -57,7 +62,7 @@ function SEO({ description, lang, meta, title }) {
         },
         {
           name: `twitter:creator`,
-          content: site.siteMetadata.author,
+          content: twitterCreator,
         },
         {
           name: `twitter:title`,
@@ -78,6 +83,7 @@ SEO.defaultProps = {
   description: ``,
 }
 
+// TODO
 SEO.propTypes = {
   description: PropTypes.string,
   lang: PropTypes.string,

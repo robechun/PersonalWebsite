@@ -48,20 +48,19 @@ const PostCard = (props) => {
       direction='column'
       alignItems='flex-start'
       justify='center'
-      xs={12}
     >
-      <Grid item>
+      <Grid item xs={12}>
         <Button href={props.slug} disableRipple>
           <img className={ cx(styles.media) } src={props.imageUrl} alt=''/>
         </Button>
       </Grid>
-      <Grid item className={styles.contentDate}>
+      <Grid item xs={12} className={styles.contentDate}>
         <div>{props.date}</div>
       </Grid>
-      <Grid item className={ cx(styles.contentHeading, styles.link) }>
+      <Grid item xs={12} className={ cx(styles.contentHeading, styles.link) }>
         <a href={props.slug}>{props.heading}</a>
       </Grid>
-      <Grid item className={ cx(styles.contentBlurb, styles.link) }>
+      <Grid item xs={12} className={ cx(styles.contentBlurb, styles.link) }>
         <a href={props.slug}>{props.blurb}</a>
       </Grid>
 

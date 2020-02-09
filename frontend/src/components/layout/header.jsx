@@ -24,7 +24,7 @@ const styles = {
     }
   },
 
-  header: {
+  headerStyle: {
     backgroundColor: themeColor,
     height: '4.3em',
     paddingLeft: '30px',
@@ -59,7 +59,7 @@ const Header = (props) => {
         alignItems='baseline'
         alignContent='center'
         spacing={6}
-        className={classes.header}
+        className={classes.headerStyle}
       >
         {!largerThanMediumScreen ? <HamburgerMenu/> : null}
 
@@ -73,7 +73,7 @@ const Header = (props) => {
         {largerThanMediumScreen ? 
           <>
           {MENU_ITEMS.map((item, index) => (
-            <Grid item>
+            <Grid item key={index}>
               <Link className={classes.links} href={item[1]}>{item[0]}</Link>
             </Grid>
           ))}

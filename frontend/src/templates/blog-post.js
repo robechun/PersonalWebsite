@@ -7,8 +7,7 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import PaperContent from '../components/posts/paperContent';
 import PaperlessContent from '../components/posts/paperlessContent';
 
-//import Bio from "../components/bio"
-//import SEO from "../components/seo"
+import SEO from "../components/seo"
 //import { rhythm, scale } from "../utils/typography"
 
 const styles = {
@@ -32,17 +31,16 @@ const styles = {
 const BlogPostTemplate = ({ classes, data, pageContext }) => {
 
   const post = data.ghostPost;
-  //const siteTitle = data.site.siteMetadata.title;
   //const { previous, next } = pageContext;
   const theme = useTheme();
   const smallScreen = useMediaQuery(theme.breakpoints.down('xs'));
 
   return(
       <Layout>
-        {/*<SEO
-          title={post.frontmatter.title}
-          description={post.frontmatter.description || post.excerpt}
-        />*/}
+        <SEO
+          title={post.meta_title || post.title}
+          description={post.meta_description || post.excerpt}
+        />
         <img src={post.feature_image} className={classes.imageStyle} alt=''/>
 
         {smallScreen 
@@ -90,18 +88,16 @@ export default withStyles(styles)(BlogPostTemplate);
 
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
-    site {
-      siteMetadata {
-        title
-      }
-    }
     ghostPost(slug: { eq: $slug }) {
       id
       html
+      excerpt
       title
       slug
       reading_time
       feature_image
+      meta_title
+      meta_description
     }
   }
 `

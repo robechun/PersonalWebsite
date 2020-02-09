@@ -42,7 +42,11 @@ const BlogIndex = ({ classes, data }) => {
             alignContent='center'
           >
             {posts.map((post) => 
-              <Grid item className={classes.content}>
+              <Grid 
+                item 
+                className={classes.content} 
+                key={post.node.title}
+              >
                 <PostCard 
                   heading={post.node.title}
                   blurb={post.node.excerpt}

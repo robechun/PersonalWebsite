@@ -27,10 +27,9 @@ const BookShelf = ({ classes, data }) => {
           direction='row'
           alignItems='center'
           justify='center'
-          xs={12}
         >
         {books.map((book) => 
-          <Grid item>
+          <Grid item key={book.node.title}>
             <BookCard
               slug={book.node.slug}
               imageUrl={book.node.feature_image}

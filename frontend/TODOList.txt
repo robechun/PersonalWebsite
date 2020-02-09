@@ -13,6 +13,8 @@ x Needs to be Mobile friendly...
   x Resize nav bar to use hamburger when it gets to mobile size
 x Need to change query for ghost to have articles only render posts that have tag: 'blog'
 x Books page
+x SEO stuff
+x Image in Post.jsx needs to be center not at front.
 
 === QUESTIONABLE ===
 
@@ -20,12 +22,11 @@ x Books page
 - Make sure Ghost post query with pagination works correctly
 - image sizing for each post (inside the actual posts page)
   - image container on the actual posts page so that we can use all kinds of image sizes and it wont look bad
+- Cache bust on client: https://stackoverflow.com/questions/49456841/browser-cache-busting-on-s3-cloudfront
 
 === LOW PRIORITY ===
-- Image in Post.jsx needs to be center not at front.
 - Uploading image within ghost and then getting image after (can be done via static foler i think)
 - Incorporate Read-Time
-- SEO stuff
 - When in mobile theres a horizontal scroll. Let's get rid of that
 - Deployment Strategy/perhaps not hosting ghost all the time to save cost??
   - Everytime we have commit run the `npm run deploy` command which will:
@@ -35,3 +36,4 @@ x Books page
 - Search functionality?
 - footer is actually not sticking as I want it to but it'll be fine if there's more posts overall
 - Projects page (currently just removed it since nothings there anyways)
+- Get rid of npm packages that we dont need

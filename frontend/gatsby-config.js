@@ -5,10 +5,10 @@ module.exports = {
   siteMetadata: {
     title: `Robert Chung blog`,
     author: `Robert Chung`,
-    description: `Blog for Robert`,
-    siteUrl: `http://robertchung.me.s3-website-us-west-2.amazonaws.com/`,
+    description: `Robert Chung's site. Has articles, books, and more.`,
+    siteUrl: `https://www.robertchung.me`,
     social: {
-      twitter: `TODO`,
+      twitter: `_robertchung`,
     },
   },
   plugins: [
@@ -76,7 +76,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-canonical-urls`,
       options: {
-        siteUrl: "https://www.robechun.me",
+        siteUrl: "https://www.robertchung.me",
       }
     }
   ],

@@ -62,6 +62,7 @@ export default function TemporaryDrawer() {
             disableRipple 
             component='a'
             href={item[1]}
+            key={index}
           >
             <ListItemText disableTypography primary={item[0]} className={classes.links} />
           </ListItem>
