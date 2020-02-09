@@ -78,8 +78,21 @@ module.exports = {
       options: {
         siteUrl: "https://www.robertchung.me",
       }
-    }
+    },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Robert's blog`,
+        short_name: `Robert's blog`,
+        description: `Robert Chung's site. Has articles, books, and more.`,
+        lang: `en`,
+        display: `standalone`,
+        icon: `src/images/logo.png`,
+        start_url: `/`,
+      },
+    },
   ],
+
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

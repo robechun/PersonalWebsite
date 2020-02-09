@@ -17,12 +17,12 @@ x SEO stuff
 x Image in Post.jsx needs to be center not at front.
 
 === QUESTIONABLE ===
+? Cache bust on client: https://stackoverflow.com/questions/49456841/browser-cache-busting-on-s3-cloudfront
 
 === HIGH PRIORITY ===
 - Make sure Ghost post query with pagination works correctly
 - image sizing for each post (inside the actual posts page)
   - image container on the actual posts page so that we can use all kinds of image sizes and it wont look bad
-- Cache bust on client: https://stackoverflow.com/questions/49456841/browser-cache-busting-on-s3-cloudfront
 
 === LOW PRIORITY ===
 - Uploading image within ghost and then getting image after (can be done via static foler i think)

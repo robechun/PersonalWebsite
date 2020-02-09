@@ -1,6 +1,5 @@
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
-var s3 = require(`@auth0/s3`);
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
