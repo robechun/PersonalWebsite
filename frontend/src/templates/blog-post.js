@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import { useTheme, withStyles } from '@material-ui/core/styles';
-import Layout from "../components/layout"
+import Layout from "../components/layout/layout";
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 import PaperContent from '../components/posts/paperContent';

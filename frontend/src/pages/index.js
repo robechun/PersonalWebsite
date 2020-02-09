@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { graphql } from "gatsby"
 
 //import Bio from "../components/bio"
-import Layout from '../components/layout'
+import Layout from '../components/layout/layout'
 import Post from '../components/post'
 import Title from '../components/title'
 //import SEO from "../components/seo"

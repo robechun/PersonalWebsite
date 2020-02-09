@@ -3,7 +3,7 @@ import Paper from '@material-ui/core/Paper'
 import { withStyles } from '@material-ui/core/styles';
 import { graphql } from 'gatsby'
 
-import Layout from '../components/layout.jsx'
+import Layout from '../components/layout/layout'
 import Title from '../components/title.jsx'
 
 const styles = {
