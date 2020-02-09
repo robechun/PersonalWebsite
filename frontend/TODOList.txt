@@ -9,25 +9,29 @@ x localhost 8000 (gatsby develop) doesn't fetch the latest stuff from ghost afte
 x About page re-rendering and getting rid of the content during production?? Not sure why (due to nested <p> tags. Cant have that)
 x Actual footer
 x Footer is broken; the colors are not actually rendering and it's not actually sticking to bottom either
+x Needs to be Mobile friendly...
+  x Resize nav bar to use hamburger when it gets to mobile size
+x Need to change query for ghost to have articles only render posts that have tag: 'blog'
+x Books page
 
 === QUESTIONABLE ===
-? image container on the actual posts page so that we can use all kinds of image sizes and it wont look bad
 
 === HIGH PRIORITY ===
-- Needs to be Mobile friendly...
-  - Resize nav bar to use hamburger when it gets to mobile size
-- Books page
-- Projects page
-- Need to change query for ghost to have articles only render posts that have tag: 'blog'
+- Make sure Ghost post query with pagination works correctly
+- image sizing for each post (inside the actual posts page)
+  - image container on the actual posts page so that we can use all kinds of image sizes and it wont look bad
 
 === LOW PRIORITY ===
 - Image in Post.jsx needs to be center not at front.
 - Uploading image within ghost and then getting image after (can be done via static foler i think)
 - Incorporate Read-Time
 - SEO stuff
+- When in mobile theres a horizontal scroll. Let's get rid of that
 - Deployment Strategy/perhaps not hosting ghost all the time to save cost??
   - Everytime we have commit run the `npm run deploy` command which will:
     x npm build && deploy
     x upload to s3 (run command)
     x invalidate cloudfront cache
-
+- Search functionality?
+- footer is actually not sticking as I want it to but it'll be fine if there's more posts overall
+- Projects page (currently just removed it since nothings there anyways)

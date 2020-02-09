@@ -5,14 +5,14 @@ import { graphql } from "gatsby"
 
 //import Bio from "../components/bio"
 import Layout from '../components/layout/layout'
-import Post from '../components/post'
+import PostCard from '../components/postcard'
 import Title from '../components/title'
 //import SEO from "../components/seo"
 //import { rhythm } from "../utils/typography"
 
 const styles = {
   offset: {
-    margin: '3em 3em 0em 3em'
+    margin: '2em 2em 0em 2em'
   },
   content: {
     maxWidth: '346px',
@@ -43,7 +43,7 @@ const BlogIndex = ({ classes, data }) => {
           >
             {posts.map((post) => 
               <Grid item className={classes.content}>
-                <Post 
+                <PostCard 
                   heading={post.node.title}
                   blurb={post.node.excerpt}
                   date={post.node.created_at}
@@ -62,11 +62,13 @@ const BlogIndex = ({ classes, data }) => {
 
 export default withStyles(styles)(BlogIndex);
 
+// Only grab things that have the tag 'blog'
 export const pageQuery = graphql`
-  query GhostPostQuery($limit: Int = 15) {
+  query BlogPostQuery($limit: Int = 15) {
     allGhostPost(
         sort: { order: DESC, fields: [published_at] },
         limit: $limit,
+        filter: {tags: {elemMatch: {name: {eq: "blog"}}}}
     ) {
       edges {
         node {

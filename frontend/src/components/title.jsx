@@ -1,8 +1,6 @@
 import React from 'react'
-
 import { withStyles } from '@material-ui/core/styles';
 
-// TODO this styling
 const styles = {
   title: {
     fontFamily: 'Open Sans',

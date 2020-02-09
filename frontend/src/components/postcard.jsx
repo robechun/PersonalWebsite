@@ -6,8 +6,6 @@ import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 
-// TODO 1/25/20: Make the image and other stuff buttons.
-
 const useStyles = makeStyles(({ breakpoints, spacing }) => ({
   media: {
     height: '224px',
@@ -41,7 +39,7 @@ const useStyles = makeStyles(({ breakpoints, spacing }) => ({
 
 }));
 
-const Post = (props) => {
+const PostCard = (props) => {
   const styles = useStyles();
 
   return (
@@ -73,7 +71,7 @@ const Post = (props) => {
   );
 };
 
-Post.propTypes = {
+PostCard.propTypes = {
   heading: PropTypes.string.isRequired,
   blurb: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
@@ -81,4 +79,4 @@ Post.propTypes = {
   imageUrl: PropTypes.string.isRequired
 }
 
-export default Post;
+export default PostCard;

@@ -6,9 +6,11 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
   const blogPost = path.resolve(`./src/templates/blog-post.js`)
-  const result = await graphql(`
+  const blogResults = await graphql(`
     {
-      allGhostPost {
+      allGhostPost(
+        filter: {tags: {elemMatch: {name: {eq: "blog"}}}}
+      ) {
         edges {
           node {
             slug
@@ -19,18 +21,36 @@ exports.createPages = async ({ graphql, actions }) => {
     `
   )
 
-  if (result.errors) {
-    throw result.errors
+  const booksResult = await graphql(`
+    {
+      allGhostPost(
+        filter: {tags: {elemMatch: {name: {eq: "books"}}}}
+      ) {
+        edges {
+          node {
+            slug
+          }
+        }
+      }
+    }
+    `
+  )
+
+  if (blogResults.errors) {
+    throw blogResults.errors
+  }
+  if (booksResult.errors) {
+    throw booksResult.errors
   }
 
   // Create all the pages
-  const posts = result.data.allGhostPost.edges
+  const blogPosts = blogResults.data.allGhostPost.edges
+  const bookPosts = booksResult.data.allGhostPost.edges
 
-  posts.forEach((post, index) => {
-    const previous = index === posts.length - 1 ? null : posts[index + 1].node
-    const next = index === 0 ? null : posts[index - 1].node
+  blogPosts.forEach((post, index) => {
+    const previous = index === blogPosts.length - 1 ? null : blogPosts[index + 1].node
+    const next = index === 0 ? null : blogPosts[index - 1].node
 
-    // TODO the "hydration problem" might be because we need to add '/' to the path instead
     createPage({
       path: post.node.slug,
       component: blogPost,
@@ -42,42 +62,19 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
-}
+  bookPosts.forEach((post, index) => {
+    const previous = index === bookPosts.length - 1 ? null : bookPosts[index + 1].node
+    const next = index === 0 ? null : bookPosts[index - 1].node
 
-//exports.onPostBuild = async (params) => {
-  //var client = s3.createClient({
-    //s3Options: {
-      //accessKeyId: process.env.AWS_ACCESS_KEY,
-      //secretAccessKey: process.env.AWS_SECRET_KEY,
-      //region: 'us-west-2'
-    //}
-  //})
+    createPage({
+      path: 'bookshelf/' + post.node.slug,
+      component: blogPost,
+      context: {
+        slug: post.node.slug,
+        previous,
+        next,
+      },
+    })
+  })
 
-  //var params = {
-    //localDir: "public",
-    //deleteRemoved: true,
-    //s3Params: {
-      //Bucket: 'robertchung.me',
-      //Prefix: ''
-    //},
-  //};
-
-  //var uploader = client.uploadDir(params);
-  //uploader.on('error', function(err) {
-    //console.error("unable to sync:", err.stack);
-  //});
-  //uploader.on('progress', function() {
-    //console.log("progress", uploader.progressAmount, uploader.progressTotal);
-  //});
-  //uploader.on('end', function() {
-    //console.log("done uploading");
-  //});
-  
-  //await(sleep(20000));
-//}
-
-function sleep(ms) {
-  return new Promise((resolve) => {
-    setTimeout(resolve, ms);
-  });
 }
