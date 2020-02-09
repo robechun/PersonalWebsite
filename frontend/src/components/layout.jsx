@@ -49,6 +49,15 @@ const styles = {
       color: '#A6B0EA',
     },
   },
+
+  copyRight: {
+    fontFamily: 'Nunito',
+    fontSize: '16px',
+    color: '#A6B0EA',
+    fontWeight: 'lighter',
+    marginLeft: '1em',
+    fontStyle: 'italic'
+  }
 };
 
 const socialLinks = {
@@ -56,7 +65,7 @@ const socialLinks = {
   width: 40
 };
 
-const socialLinkColor = 'FF9D9D';
+const socialLinkColor = '#FFCFCF';
 
 const Layout = (props) => {
 
@@ -105,33 +114,47 @@ const Layout = (props) => {
       </header>
       <div>{props.children}</div>
       <footer className={classes.footer}>
-        <Grid 
+        <Grid
           container
           direction='row'
-          justify='flex-end'
-          alignContent='center'
+          justify='space-between'
+          alignItems='center'
           spacing={2}
         >
-          <Grid item>
-            <SocialIcon 
-              url='https://linkedin.com/in/robertchung97'
-              bgColor={socialLinkColor}
-              style={socialLinks}
-            />
+          <Grid item className={classes.copyRight}>
+            © Robert Chung
           </Grid>
+
           <Grid item>
-            <SocialIcon 
-              url='https://github.com/Altrum/'
-              bgColor={socialLinkColor}
-              style={socialLinks}
-            />
-          </Grid>
-          <Grid item>
-            <SocialIcon 
-              url='mailto:robertchung97@gmail.com'
-              bgColor={socialLinkColor}
-              style={socialLinks}
-            />
+            <Grid 
+              container
+              direction='row'
+              justify='flex-end'
+              alignContent='center'
+              spacing={2}
+            >
+              <Grid item>
+                <SocialIcon 
+                  url='https://linkedin.com/in/robertchung97'
+                  bgColor={socialLinkColor}
+                  style={socialLinks}
+                />
+              </Grid>
+              <Grid item>
+                <SocialIcon 
+                  url='https://github.com/Altrum/'
+                  bgColor={socialLinkColor}
+                  style={socialLinks}
+                />
+              </Grid>
+              <Grid item>
+                <SocialIcon 
+                  url='mailto:robertchung97@gmail.com'
+                  bgColor={socialLinkColor}
+                  style={socialLinks}
+                />
+              </Grid>
+            </Grid>
           </Grid>
         </Grid>
       </footer>
