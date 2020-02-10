@@ -18,3 +18,10 @@ html {
     font-style: 'normal';
     margin: '1.3em';
 }
+
+figcaption {
+    color: #0000008a;
+    font: italic smaller sans-serif;
+    padding: 3px;
+    text-align: center;
+}

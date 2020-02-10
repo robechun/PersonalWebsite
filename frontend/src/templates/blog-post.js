@@ -1,4 +1,5 @@
-import React from "react"
+import React, { useEffect } from "react"
+import Prism from "prismjs";
 import { graphql } from "gatsby"
 import { useTheme, withStyles } from '@material-ui/core/styles';
 import Layout from "../components/layout/layout";
@@ -9,6 +10,9 @@ import PaperlessContent from '../components/posts/paperlessContent';
 
 import SEO from "../components/seo"
 //import { rhythm, scale } from "../utils/typography"
+
+// enable java code style
+require("prismjs/components/prism-java");
 
 const styles = {
   article: { 
@@ -29,6 +33,11 @@ const styles = {
 }
 
 const BlogPostTemplate = ({ classes, data, pageContext }) => {
+
+  // Need this to render highlighting. Also need the setTimeout() (very important)
+  useEffect(() => {
+    setTimeout(() => Prism.highlightAll(), 0);
+  }, []);
 
   const post = data.ghostPost;
   //const { previous, next } = pageContext;

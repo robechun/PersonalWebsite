@@ -15,6 +15,11 @@ x Need to change query for ghost to have articles only render posts that have ta
 x Books page
 x SEO stuff
 x Image in Post.jsx needs to be center not at front.
+x Deployment for everytime we update ghost
+  x Everytime we have ghost change run the `npm run deploy` command which will:
+    x npm build && deploy
+    x upload to s3 (run command)
+    x invalidate cloudfront cache
 
 === QUESTIONABLE ===
 ? Cache bust on client: https://stackoverflow.com/questions/49456841/browser-cache-busting-on-s3-cloudfront
@@ -23,17 +28,18 @@ x Image in Post.jsx needs to be center not at front.
 - Make sure Ghost post query with pagination works correctly
 - image sizing for each post (inside the actual posts page)
   - image container on the actual posts page so that we can use all kinds of image sizes and it wont look bad
+- Backup data from ec2 stuff
 
 === LOW PRIORITY ===
 - Uploading image within ghost and then getting image after (can be done via static foler i think)
 - Incorporate Read-Time
 - When in mobile theres a horizontal scroll. Let's get rid of that
-- Deployment Strategy/perhaps not hosting ghost all the time to save cost??
-  - Everytime we have commit run the `npm run deploy` command which will:
-    x npm build && deploy
-    x upload to s3 (run command)
-    x invalidate cloudfront cache
 - Search functionality?
 - footer is actually not sticking as I want it to but it'll be fine if there's more posts overall
 - Projects page (currently just removed it since nothings there anyways)
 - Get rid of npm packages that we dont need
+- Maybe put down ec2 until it's needed?
+  - Could use API gateway to trigger lambda to spin up the ec2?
+- any kind of navigation flashes the "hidden" components for mobile friendly stuff... not sure why; 
+  maybe it's the rendering order? Maybe in the beginning media query always hits?
+- Logo not showing up
