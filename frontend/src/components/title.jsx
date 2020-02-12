@@ -1,5 +1,6 @@
 import React from 'react'
 import { withStyles } from '@material-ui/core/styles';
+import cx from 'clsx';
 
 const styles = {
   title: {
@@ -14,8 +15,10 @@ const styles = {
 const Title = (props) => {
   const { classes } = props;
 
+  console.log(props);
+
   return (
-    <h2 className={classes.title}>
+    <h2 className={ cx(classes.title, props.className) }>
       {props.children}
     </h2>
   )

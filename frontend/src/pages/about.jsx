@@ -12,10 +12,10 @@ import SEO from '../components/seo';
 const styles = {
   paperStyle: {
     margin: '30px',
-    padding: '30px'
+    padding: '60px'
   },
-  content: {
-    margin: '0px',
+  smallStyle: {
+    padding: '30px'
   }
 }
 
@@ -34,18 +34,16 @@ const About = ({ classes, data }) => {
           description={aboutPage.meta_description}
         />
         {smallScreen ? 
-          <>
-          <Title className={classes.content }>About</Title>
-          <div className={classes.content} 
-            dangerouslySetInnerHTML={{ __html: aboutPage.html }} />
-          </>
+          <div className={classes.smallStyle}>
+            <Title>About</Title>
+            <div dangerouslySetInnerHTML={{ __html: aboutPage.html }} />
+          </div>
         :
           <>
-          <Paper elevation={3} className={classes.paperStyle}>
-              <Title className={classes.content }>About</Title>
-              <div className={classes.content} 
-                dangerouslySetInnerHTML={{ __html: aboutPage.html }}/>
-          </Paper>
+            <Paper elevation={3} className={classes.paperStyle}>
+              <Title>About</Title>
+              <div dangerouslySetInnerHTML={{ __html: aboutPage.html }}/>
+            </Paper>
           </>
         }
       </Layout>

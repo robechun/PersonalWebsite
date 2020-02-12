@@ -24,6 +24,10 @@ const styles = {
     fontWeight: 'lighter',
     marginLeft: '1em',
     fontStyle: 'italic'
+  }, 
+
+  somePadding: {
+    paddingLeft: '30px'
   }
 };
 
@@ -60,6 +64,7 @@ const Footer = (props) => {
             justify='flex-end'
             alignContent='center'
             spacing={2}
+            className={classes.somePadding}
           >
             <Grid item>
               <SocialIcon 

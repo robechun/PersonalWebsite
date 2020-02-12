@@ -1,5 +1,6 @@
-import React from "react"
+import React from 'react'
 import { withStyles } from '@material-ui/core/styles';
+import cx from 'clsx';
 import Title from '../title';
 
 const styles = {
@@ -7,6 +8,10 @@ const styles = {
     fontFamily: 'Raleway',
     fontSize: '12px',
   },
+
+  somePadding: {
+    padding: '0px 30px 0px 30px'
+  }
 }
 
 const PaperlessContent = (props) => {
@@ -16,10 +21,10 @@ const PaperlessContent = (props) => {
   return(
       <article>
         <header>
-          <Title>{props.title}</Title>
+          <Title className={classes.somePadding}>{props.title}</Title>
         </header>
         <section 
-          className={classes.article}
+          className={ cx(classes.article, classes.somePadding) }
           dangerouslySetInnerHTML={{ __html: props.html }} />
         <hr/>
       </article>
