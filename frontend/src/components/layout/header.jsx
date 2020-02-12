@@ -28,7 +28,8 @@ const styles = {
     backgroundColor: themeColor,
     height: '4.3em',
     paddingLeft: '30px',
-    margin: '0px'
+    margin: '0px',
+    width: '100%'
   },
   
   links: {

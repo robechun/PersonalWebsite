@@ -15,8 +15,6 @@ const styles = {
 const Title = (props) => {
   const { classes } = props;
 
-  console.log(props);
-
   return (
     <h2 className={ cx(classes.title, props.className) }>
       {props.children}
