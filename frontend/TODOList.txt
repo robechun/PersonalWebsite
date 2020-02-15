@@ -20,6 +20,12 @@ x Deployment for everytime we update ghost
     x npm build && deploy
     x upload to s3 (run command)
     x invalidate cloudfront cache
+x Logo not showing up
+x When in mobile theres a horizontal scroll. Let's get rid of that
+x any kind of navigation flashes the "hidden" components for mobile friendly stuff... not sure why; 
+  maybe it's the rendering order? Maybe in the beginning media query always hits?
+    -> This is kinda unavoidable since we're generating a static website. Currently have it so that default is desktop...
+       Not the best setup but since we don't have the DOM/window at buildtime, this is best we can do. 
 
 === QUESTIONABLE ===
 ? Cache bust on client: https://stackoverflow.com/questions/49456841/browser-cache-busting-on-s3-cloudfront
@@ -29,17 +35,14 @@ x Deployment for everytime we update ghost
 - image sizing for each post (inside the actual posts page)
   - image container on the actual posts page so that we can use all kinds of image sizes and it wont look bad
 - Backup data from ec2 stuff
+- Faster fonts loading thing?
 
 === LOW PRIORITY ===
 - Uploading image within ghost and then getting image after (can be done via static foler i think)
 - Incorporate Read-Time
-- When in mobile theres a horizontal scroll. Let's get rid of that
 - Search functionality?
 - footer is actually not sticking as I want it to but it'll be fine if there's more posts overall
 - Projects page (currently just removed it since nothings there anyways)
 - Get rid of npm packages that we dont need
 - Maybe put down ec2 until it's needed?
   - Could use API gateway to trigger lambda to spin up the ec2?
-- any kind of navigation flashes the "hidden" components for mobile friendly stuff... not sure why; 
-  maybe it's the rendering order? Maybe in the beginning media query always hits?
-- Logo not showing up

@@ -1,8 +1,7 @@
 import React, { useEffect } from "react"
 import Prism from "prismjs";
 import { graphql } from "gatsby"
-import { useTheme, withStyles } from '@material-ui/core/styles';
-import Layout from "../components/layout/layout";
+import { withStyles } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 import PaperContent from '../components/posts/paperContent';
@@ -41,55 +40,54 @@ const BlogPostTemplate = ({ classes, data, pageContext }) => {
 
   const post = data.ghostPost;
   //const { previous, next } = pageContext;
-  const theme = useTheme();
-  const smallScreen = useMediaQuery(theme.breakpoints.down('xs'));
+  const mobileScreen = useMediaQuery('(max-width:400px)');
 
   return(
-      <Layout>
-        <SEO
-          title={post.meta_title || post.title}
-          description={post.meta_description || post.excerpt}
-        />
-        <img src={post.feature_image} className={classes.imageStyle} alt=''/>
+    <>
+      <SEO
+        title={post.meta_title || post.title}
+        description={post.meta_description || post.excerpt}
+      />
+      <img src={post.feature_image} className={classes.imageStyle} alt=''/>
 
-        {smallScreen 
-          ? <PaperlessContent
-              title={post.title}
-              html={post.html}
-            />
-          : <PaperContent
-              title={post.title}
-              html={post.html}
-            />
-        }
+      {mobileScreen 
+        ? <PaperlessContent
+            title={post.title}
+            html={post.html}
+          />
+        : <PaperContent
+            title={post.title}
+            html={post.html}
+          />
+      }
 
-        {/*<nav>
-          <ul
-            style={{
-              display: `flex`,
-              flexWrap: `wrap`,
-              justifyContent: `space-between`,
-              listStyle: `none`,
-              padding: 0,
-            }}
-          >
-            <li>
-              {previous && (
-                <Link to={previous.fields.slug} rel="prev">
-                  ← {previous.frontmatter.title}
-                </Link>
-              )}
-            </li>
-            <li>
-              {next && (
-                <Link to={next.fields.slug} rel="next">
-                  {next.frontmatter.title} →
-                </Link>
-              )}
-            </li>
-          </ul>
-        </nav>*/}
-      </Layout>
+      {/*<nav>
+        <ul
+          style={{
+            display: `flex`,
+            flexWrap: `wrap`,
+            justifyContent: `space-between`,
+            listStyle: `none`,
+            padding: 0,
+          }}
+        >
+          <li>
+            {previous && (
+              <Link to={previous.fields.slug} rel="prev">
+                ← {previous.frontmatter.title}
+              </Link>
+            )}
+          </li>
+          <li>
+            {next && (
+              <Link to={next.fields.slug} rel="next">
+                {next.frontmatter.title} →
+              </Link>
+            )}
+          </li>
+        </ul>
+      </nav>*/}
+    </>
     )
 }
 

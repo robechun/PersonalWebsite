@@ -1,10 +1,9 @@
 import React from 'react'
 import Paper from '@material-ui/core/Paper'
-import { useTheme, withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import { graphql } from 'gatsby'
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
-import Layout from '../components/layout/layout'
 import Title from '../components/title.jsx'
 
 import SEO from '../components/seo';
@@ -21,32 +20,29 @@ const styles = {
 
 const About = ({ classes, data }) => {
 
-  const theme = useTheme();
-  const smallScreen = useMediaQuery(theme.breakpoints.down('xs'));
+  const mobileScreen = useMediaQuery('(max-width:400px)');
 
   const aboutPage = data.ghostPage;
 
   return (
     <>
-      <Layout>
-        <SEO 
-          title={aboutPage.meta_title || aboutPage.title}
-          description={aboutPage.meta_description}
-        />
-        {smallScreen ? 
-          <div className={classes.smallStyle}>
+      <SEO 
+        title={aboutPage.meta_title || aboutPage.title}
+        description={aboutPage.meta_description}
+      />
+      {mobileScreen ? 
+        <div className={classes.smallStyle}>
+          <Title>About</Title>
+          <div dangerouslySetInnerHTML={{ __html: aboutPage.html }} />
+        </div>
+      :
+        <>
+          <Paper elevation={3} className={classes.paperStyle}>
             <Title>About</Title>
-            <div dangerouslySetInnerHTML={{ __html: aboutPage.html }} />
-          </div>
-        :
-          <>
-            <Paper elevation={3} className={classes.paperStyle}>
-              <Title>About</Title>
-              <div dangerouslySetInnerHTML={{ __html: aboutPage.html }}/>
-            </Paper>
-          </>
-        }
-      </Layout>
+            <div dangerouslySetInnerHTML={{ __html: aboutPage.html }}/>
+          </Paper>
+        </>
+      }
     </>
   );
   

@@ -4,7 +4,6 @@ import { withStyles } from '@material-ui/core/styles';
 import { graphql } from "gatsby"
 
 //import Bio from "../components/bio"
-import Layout from '../components/layout/layout'
 import PostCard from '../components/postcard'
 import Title from '../components/title'
 //import SEO from "../components/seo"
@@ -24,8 +23,6 @@ const BlogIndex = ({ classes, data }) => {
 
   const posts = data.allGhostPost.edges;
     return (
-      <Layout>
-
         <Grid 
           container
           directon='column'
@@ -59,8 +56,6 @@ const BlogIndex = ({ classes, data }) => {
             }
           </Grid>
         </Grid>
-
-      </Layout>
     )
 }
 

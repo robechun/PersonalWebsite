@@ -1,6 +1,4 @@
 import React from 'react';
-import Layout from '../components/layout/layout';
-
 import { withStyles } from '@material-ui/core/styles';
 
 import Title from '../components/title';
@@ -15,11 +13,9 @@ const Projects = (props) => {
   //const { classes } = props;
 
   return (
-    <Layout>
-      <main>
-        <Title>Work in Progress</Title>
-      </main>
-    </Layout>
+    <main>
+      <Title>Work in Progress</Title>
+    </main>
   )
 }
 

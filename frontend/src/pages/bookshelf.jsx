@@ -1,5 +1,4 @@
 import React from 'react';
-import Layout from '../components/layout/layout';
 import { withStyles } from '@material-ui/core/styles';
 import { graphql } from "gatsby"
 import Grid from '@material-ui/core/Grid';
@@ -17,28 +16,26 @@ const BookShelf = ({ classes, data }) => {
   const books = data.allGhostPost.edges;
 
   return (
-    <Layout>
-      <main>
-        <div className={classes.offset}>
-          <Title>Books</Title>
-        </div>
-        <Grid 
-          container
-          direction='row'
-          alignItems='center'
-          justify='center'
-        >
-        {books.map((book) => 
-          <Grid item key={book.node.title}>
-            <BookCard
-              slug={book.node.slug}
-              imageUrl={book.node.feature_image}
-              />
-          </Grid>
-        )}
+    <main>
+      <div className={classes.offset}>
+        <Title>Books</Title>
+      </div>
+      <Grid 
+        container
+        direction='row'
+        alignItems='center'
+        justify='center'
+      >
+      {books.map((book) => 
+        <Grid item key={book.node.title}>
+          <BookCard
+            slug={book.node.slug}
+            imageUrl={book.node.feature_image}
+            />
         </Grid>
-      </main>
-    </Layout>
+      )}
+      </Grid>
+    </main>
   )
 }
 
