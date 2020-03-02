@@ -26,23 +26,24 @@ x any kind of navigation flashes the "hidden" components for mobile friendly stu
   maybe it's the rendering order? Maybe in the beginning media query always hits?
     -> This is kinda unavoidable since we're generating a static website. Currently have it so that default is desktop...
        Not the best setup but since we don't have the DOM/window at buildtime, this is best we can do. 
+x Maybe put down ec2 until it's needed?
+  x Could use API gateway to trigger lambda to spin up the ec2?
+x Image upload to s3 and correctly link it in the actual site
 
 === QUESTIONABLE ===
 ? Cache bust on client: https://stackoverflow.com/questions/49456841/browser-cache-busting-on-s3-cloudfront
+? Apparently can fix the FOUC thing by using CSS files instead of styled components...?
 
 === HIGH PRIORITY ===
 - Make sure Ghost post query with pagination works correctly
 - image sizing for each post (inside the actual posts page)
   - image container on the actual posts page so that we can use all kinds of image sizes and it wont look bad
 - Backup data from ec2 stuff
-- Faster fonts loading thing?
+- Faster fonts loading thing? (self hosted fonts)
 
 === LOW PRIORITY ===
-- Uploading image within ghost and then getting image after (can be done via static foler i think)
 - Incorporate Read-Time
 - Search functionality?
 - footer is actually not sticking as I want it to but it'll be fine if there's more posts overall
 - Projects page (currently just removed it since nothings there anyways)
 - Get rid of npm packages that we dont need
-- Maybe put down ec2 until it's needed?
-  - Could use API gateway to trigger lambda to spin up the ec2?
