@@ -1,7 +1,7 @@
 import React from "react";
 import Grid from '@material-ui/core/Grid';
 import { SocialIcon } from 'react-social-icons';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { Media } from '../mediaStyles'
 
 import { withStyles } from '@material-ui/core/styles';
 
@@ -41,7 +41,6 @@ const socialLinkColor = '#FFCFCF';
 const Footer = (props) => {
 
   const { classes } = props;
-  const mobileScreen = useMediaQuery('(max-width:370px)');
 
   return (
     <footer className={classes.footer}>
@@ -52,12 +51,11 @@ const Footer = (props) => {
         alignItems='center'
         spacing={2}
       >
-        { !mobileScreen ? 
+        <Media greaterThan='xs'>
           <Grid item className={classes.copyRight}>
             © Robert Chung
           </Grid>
-          : null
-        }
+        </Media>
 
         <Grid item>
           <Grid 

@@ -2,7 +2,7 @@ import React, { useEffect } from "react"
 import Prism from "prismjs";
 import { graphql } from "gatsby"
 import { withStyles } from '@material-ui/core/styles';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { Media } from '../components/mediaStyles';
 
 import PaperContent from '../components/posts/paperContent';
 import PaperlessContent from '../components/posts/paperlessContent';
@@ -40,7 +40,6 @@ const BlogPostTemplate = ({ classes, data, pageContext }) => {
 
   const post = data.ghostPost;
   //const { previous, next } = pageContext;
-  const mobileScreen = useMediaQuery('(max-width:400px)');
 
   return(
     <>
@@ -50,16 +49,18 @@ const BlogPostTemplate = ({ classes, data, pageContext }) => {
       />
       <img src={post.feature_image} className={classes.imageStyle} alt=''/>
 
-      {mobileScreen 
-        ? <PaperlessContent
-            title={post.title}
-            html={post.html}
-          />
-        : <PaperContent
-            title={post.title}
-            html={post.html}
-          />
-      }
+      <Media at='xs'>
+        <PaperlessContent
+          title={post.title}
+          html={post.html}
+        />
+      </Media>
+      <Media greaterThan='xs'>
+        <PaperContent
+          title={post.title}
+          html={post.html}
+        />
+      </Media>
 
       {/*<nav>
         <ul

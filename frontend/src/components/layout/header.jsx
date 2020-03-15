@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
 import HamburgerMenu from './hamburgerMenu';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { Media } from '../mediaStyles';
 
 import MENU_ITEMS from '../../utils/constants/menuItems';
 
@@ -48,62 +49,60 @@ const styles = {
 const Header = (props) => {
 
   const { classes } = props;
-  const tabletScreen = useMediaQuery('(max-width:630px)');
-  const mobileScreen = useMediaQuery('(max-width:370px)');
 
   return (
     <header>
-
-        {mobileScreen ?
-          <Grid 
-            container
-            direction='row'
-            alignItems='center'
-            alignContent='center'
-            spacing={6}
-            className={classes.headerStyle}
-          >
-            <Grid item>
-              <HamburgerMenu/> 
-            </Grid>
+      <Media at='xs'>
+        <Grid 
+          container
+          direction='row'
+          alignItems='center'
+          alignContent='center'
+          spacing={6}
+          className={classes.headerStyle}
+        >
+          <Grid item>
+            <HamburgerMenu/> 
           </Grid>
-          : tabletScreen ? 
-            <Grid 
-              container
-              direction='row'
-              justify='space-between'
-              alignItems='center'
-              alignContent='center'
-              spacing={6}
-              className={classes.headerStyle}
-            >
-              <Grid item>
-                <Link className={classes.title} href='/'>Robert Chung</Link>
-              </Grid>
-              <Grid item>
-                <HamburgerMenu/> 
-              </Grid>
-            </Grid>
-          :
-            <Grid 
-              container
-              direction='row'
-              alignItems='center'
-              alignContent='center'
-              spacing={6}
-              className={classes.headerStyle}
-            >
-            <Grid item>
-              <Link className={classes.title} href='/'>Robert Chung</Link>
-            </Grid>
-            {MENU_ITEMS.map((item, index) => (
-              <Grid item key={index}>
-                <Link className={classes.links} href={item[1]}>{item[0]}</Link>
-              </Grid>
-            ))}
-            </Grid>
-
-        }
+        </Grid>
+      </Media>
+      <Media at='sm'>
+        <Grid 
+          container
+          direction='row'
+          justify='space-between'
+          alignItems='center'
+          alignContent='center'
+          spacing={6}
+          className={classes.headerStyle}
+        >
+          <Grid item>
+            <Link className={classes.title} href='/'>Robert Chung</Link>
+          </Grid>
+          <Grid item>
+            <HamburgerMenu/> 
+          </Grid>
+        </Grid>
+      </Media>
+      <Media greaterThan='sm'>
+        <Grid 
+          container
+          direction='row'
+          alignItems='center'
+          alignContent='center'
+          spacing={6}
+          className={classes.headerStyle}
+        >
+        <Grid item>
+          <Link className={classes.title} href='/'>Robert Chung</Link>
+        </Grid>
+        {MENU_ITEMS.map((item, index) => (
+          <Grid item key={index}>
+            <Link className={classes.links} href={item[1]}>{item[0]}</Link>
+          </Grid>
+        ))}
+        </Grid>
+      </Media>
     </header>
   );
 

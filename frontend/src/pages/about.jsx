@@ -2,7 +2,7 @@ import React from 'react'
 import Paper from '@material-ui/core/Paper'
 import { withStyles } from '@material-ui/core/styles';
 import { graphql } from 'gatsby'
-import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { Media } from '../components/mediaStyles';
 
 import Title from '../components/title.jsx'
 
@@ -20,8 +20,6 @@ const styles = {
 
 const About = ({ classes, data }) => {
 
-  const mobileScreen = useMediaQuery('(max-width:400px)');
-
   const aboutPage = data.ghostPage;
 
   return (
@@ -30,19 +28,18 @@ const About = ({ classes, data }) => {
         title={aboutPage.meta_title || aboutPage.title}
         description={aboutPage.meta_description}
       />
-      {mobileScreen ? 
+      <Media at='xs'>
         <div className={classes.smallStyle}>
           <Title>About</Title>
           <div dangerouslySetInnerHTML={{ __html: aboutPage.html }} />
         </div>
-      :
-        <>
-          <Paper elevation={3} className={classes.paperStyle}>
-            <Title>About</Title>
-            <div dangerouslySetInnerHTML={{ __html: aboutPage.html }}/>
-          </Paper>
-        </>
-      }
+      </Media>
+      <Media greaterThan='xs'>
+        <Paper elevation={3} className={classes.paperStyle}>
+          <Title>About</Title>
+          <div dangerouslySetInnerHTML={{ __html: aboutPage.html }}/>
+        </Paper>
+      </Media>
     </>
   );
   

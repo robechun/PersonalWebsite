@@ -34,6 +34,14 @@ module.exports = {
         ],
       },
     },
+    {
+      resolve: `gatsby-plugin-material-ui`,
+      options: {
+        stylesProvider: {
+          injectFirst: false,
+        },
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
@@ -58,17 +66,9 @@ module.exports = {
       }
     },
     {
-      resolve: `gatsby-plugin-material-ui`,
-      options: {
-        stylesProvider: {
-          injectFirst: true,
-        },
-      },
-    },
-    {
       resolve: `gatsby-plugin-s3`,
       options: {
-        bucketName: 'robertchung.me',
+        bucketName: 'www.robertchung.me',
         protocol: siteAddress.protocol.slice(0, -1),
         hostname: siteAddress.hostname,
       },
