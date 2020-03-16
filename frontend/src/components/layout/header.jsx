@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
 import HamburgerMenu from './hamburgerMenu';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { Media } from '../mediaStyles';
 
 import MENU_ITEMS from '../../utils/constants/menuItems';
