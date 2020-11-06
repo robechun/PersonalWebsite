@@ -5,11 +5,17 @@ import Header from './header';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = {
+  body: {
+    display: 'flex',
+    minHeight: '100vh',
+    flexDirection: 'column'
+  }
 };
 
 const Layout = (props) => {
 
   const [isClient, setIsClient] = useState(0);
+  const { classes } = props;
 
   // Two pass rendering because we have hydration problems.
   // See: https://github.com/gatsbyjs/gatsby/issues/17914
@@ -20,7 +26,7 @@ const Layout = (props) => {
   return (
     <div key={isClient}>
       <Header/>
-        <div>{props.children}</div>
+        <div className={classes.body}>{props.children}</div>
       <Footer/>
     </div>
   );

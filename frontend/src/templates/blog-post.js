@@ -49,13 +49,13 @@ const BlogPostTemplate = ({ classes, data, pageContext }) => {
       />
       <img src={post.feature_image} className={classes.imageStyle} alt=''/>
 
-      <Media at='xs'>
+      <Media lessThan='md'>
         <PaperlessContent
           title={post.title}
           html={post.html}
         />
       </Media>
-      <Media greaterThan='xs'>
+      <Media greaterThanOrEqual='md'>
         <PaperContent
           title={post.title}
           html={post.html}

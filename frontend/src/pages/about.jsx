@@ -28,13 +28,13 @@ const About = ({ classes, data }) => {
         title={aboutPage.meta_title || aboutPage.title}
         description={aboutPage.meta_description}
       />
-      <Media at='xs'>
+      <Media lessThan='md'>
         <div className={classes.smallStyle}>
           <Title>About</Title>
           <div dangerouslySetInnerHTML={{ __html: aboutPage.html }} />
         </div>
       </Media>
-      <Media greaterThan='xs'>
+      <Media greaterThanOrEqual='md'>
         <Paper elevation={3} className={classes.paperStyle}>
           <Title>About</Title>
           <div dangerouslySetInnerHTML={{ __html: aboutPage.html }}/>
