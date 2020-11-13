@@ -8,7 +8,9 @@ const styles = {
   body: {
     display: 'flex',
     minHeight: '100vh',
-    flexDirection: 'column'
+    flexDirection: 'column',
+    margin: 'auto',
+    maxWidth: '1200px'
   }
 };
 
