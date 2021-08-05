@@ -52,7 +52,7 @@
   "devDependencies": {
     "prettier": "^1.19.1"
   },
-  "homepage": "https://github.com/Altrum/PersonalWebsite",
+  "homepage": "https://github.com/robertchung97/PersonalWebsite",
   "keywords": [
     "gatsby"
   ],
@@ -60,7 +60,7 @@
   "main": "n/a",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Altrum/PersonalWebsite.git"
+    "url": "git+https://github.com/robertchung97/PersonalWebsite.git"
   },
   "scripts": {
     "build": "gatsby build",
