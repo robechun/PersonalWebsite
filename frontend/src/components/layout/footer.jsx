@@ -75,7 +75,7 @@ const Footer = (props) => {
             </Grid>
             <Grid item>
               <SocialIcon 
-                url='https://github.com/Altrum/'
+                url='https://github.com/robertchung97/'
                 bgColor={socialLinkColor}
                 style={socialLinks}
               />
