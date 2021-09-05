@@ -82,6 +82,13 @@ const Footer = (props) => {
             </Grid>
             <Grid item>
               <SocialIcon 
+              url='https://twitter.com/_robertchung/'
+                bgColor={socialLinkColor}
+                style={socialLinks}
+              />
+            </Grid>
+            <Grid item>
+              <SocialIcon 
                 url='mailto:robertchung97@gmail.com'
                 bgColor={socialLinkColor}
                 style={socialLinks}
