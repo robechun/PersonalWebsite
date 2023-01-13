@@ -1,4 +1,4 @@
-# PersonalWebsite
+# [DEPRECATED] PersonalWebsite
 My Personal Website
 
 ## Operations
